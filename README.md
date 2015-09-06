@@ -1,5 +1,8 @@
 # garageworks-reco-tour
 
+###### this is recommandation system (service) for foreign tourist (in korea yet)
+--
+
 ### directory description
 - code-book : column, key code table (include description)
 - data-source : any data source (like csv, xlsx etc ...)
