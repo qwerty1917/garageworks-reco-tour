@@ -1,0 +1,371 @@
+code,eng_code,ko_code
+q1a,num_visit_in_latest_3ys_code,최근 3년간 한국방문 횟수
+wq1a,num_visit_in_latest_3ys_origin,최근 3년간 한국방문 횟수 (원자료)
+q1b,time_visit_in_latest,최근 한국방문시기 (년도&분기)
+q1b1,time_visit_in_latest_ys,최근 한국방문시기 (년도)
+q1b2,time_visit_in_latest_mt,최근 한국방문시기 (월)
+q2a,is_visit_only_korea,한국만 방문
+q2b,is_visit_other_before,한국방문 직전 타국가 방문
+q2c,is_visit_other_after,한국방문 직후 타국가 방문 예정
+q2b1,country_before_visit_korea,한국방문 직전 방문 국가
+q2c1,country_after_visit_korea,한국방문 직후 방문 국가
+q3,point_decision_visit_korea_code,한국여행 결정 시점
+mq3,point_decision_visit_korea_origin,한국여행 결정 시점 (원자료)
+q4,examination_before_tour_korea,여행 전 다른 국가 방문 검토 여부
+q4a1,country_before_tour_korea_1,여행전 방문 검토 국가 1
+q4a2,country_before_tour_korea_2,여행전 방문 검토 국가 2
+q4a3,country_before_tour_korea_3,여행전 방문 검토 국가 3
+q4a4,country_before_tour_korea_4,여행전 방문 검토 국가 4
+q4a5,country_before_tour_korea_5,여행전 방문 검토 국가 5
+q5,purpose_of_visit,방한 목적
+q5a1,motive_of_tour_1,여행동기(1순위)
+q5a2,motive_of_tour_2,여행동기(2순위)
+q5a3,motive_of_tour_3,여행동기(3순위)
+q6a1,channel_for_getting_tour_info_1,여행 정보 입수 경로(1순위)
+q6a2,channel_for_getting_tour_info_2,여행 정보 입수 경로(2순위)
+q6a3,channel_for_getting_tour_info_3,여행 정보 입수 경로(3순위)
+xq7a1,accompany_with_alone,동반현황_혼자왔다
+xq7a2,accompany_with_family,동반현황_가족/친지
+xq7a3,accompany_with_friend,동반현황_친구/연인
+xq7a4,accompany_with_colleague,동반현황_직장동료
+xq7a5,accompany_with_etc,동반현황_기타
+q7,num_accompany_code,동반자수(총인원_본인포함)
+mq7,num_accompany_origin,동반자수(총인원_본인포함_원자료)
+q8a1,activity_on_visit_1,한국 방문시 활동 내역(1순위)
+q8a2,activity_on_visit_2,한국 방문시 활동 내역(2순위)
+q8a3,activity_on_visit_3,한국 방문시 활동 내역(3순위)
+q8b,satisfied_activity_on_visit,한국 방문시 좋았던 활동 내역
+q9a01,tour_visit_point_1,한국여행 방문지 1
+q9a02,tour_visit_point_2,한국여행 방문지 2
+q9a03,tour_visit_point_3,한국여행 방문지 3
+q9a04,tour_visit_point_4,한국여행 방문지 4
+q9a05,tour_visit_point_5,한국여행 방문지 5
+q9a06,tour_visit_point_6,한국여행 방문지 6
+q9a07,tour_visit_point_7,한국여행 방문지 7
+q9a08,tour_visit_point_8,한국여행 방문지 8
+q9a09,tour_visit_point_9,한국여행 방문지 9
+q9a10,tour_visit_point_10,한국여행 방문지 10
+q9a11,tour_visit_point_11,한국여행 방문지 11
+q9a12,tour_visit_point_12,한국여행 방문지 12
+q9a13,tour_visit_point_13,한국여행 방문지 13
+q9a14,tour_visit_point_14,한국여행 방문지 14
+q9a15,tour_visit_point_15,한국여행 방문지 15
+q9a16,tour_visit_point_16,한국여행 방문지 16
+q9a17,tour_visit_point_17,한국여행 방문지 17
+q9a18,tour_visit_point_18,한국여행 방문지 18
+q9a19,tour_visit_point_19,한국여행 방문지 19
+q9a20,tour_visit_point_20,한국여행 방문지 20
+q9a21,tour_visit_point_21,한국여행 방문지 21
+q9a22,tour_visit_point_22,한국여행 방문지 22
+q9a23,tour_visit_point_23,한국여행 방문지 23
+q9a24,tour_visit_point_24,한국여행 방문지 24
+q9a25,tour_visit_point_25,한국여행 방문지 25
+q9a26,tour_visit_point_26,한국여행 방문지 26
+q9a27,tour_visit_point_27,한국여행 방문지 27
+q9a28,tour_visit_point_28,한국여행 방문지 28
+q9a29,tour_visit_point_29,한국여행 방문지 29
+q9a30,tour_visit_point_30,한국여행 방문지 30
+q9a31,tour_visit_point_31,한국여행 방문지 31
+q9a32,tour_visit_point_32,한국여행 방문지 32
+q9a33,tour_visit_point_33,한국여행 방문지 33
+yq9a01,tour_visit_city_1,한국여행 방문지(17개시도) 1
+yq9a02,tour_visit_city_2,한국여행 방문지(17개시도) 2
+yq9a03,tour_visit_city_3,한국여행 방문지(17개시도) 3
+yq9a04,tour_visit_city_4,한국여행 방문지(17개시도) 4
+yq9a05,tour_visit_city_5,한국여행 방문지(17개시도) 5
+yq9a06,tour_visit_city_6,한국여행 방문지(17개시도) 6
+yq9a07,tour_visit_city_7,한국여행 방문지(17개시도) 7
+yq9a08,tour_visit_city_8,한국여행 방문지(17개시도) 8
+yq9a09,tour_visit_city_9,한국여행 방문지(17개시도) 9
+yq9a10,tour_visit_city_10,한국여행 방문지(17개시도) 10
+yq9a11,tour_visit_city_11,한국여행 방문지(17개시도) 11
+yq9a12,tour_visit_city_12,한국여행 방문지(17개시도) 12
+yq9a13,tour_visit_city_13,한국여행 방문지(17개시도) 13
+yq9a14,tour_visit_city_14,한국여행 방문지(17개시도) 14
+yq9a15,tour_visit_city_15,한국여행 방문지(17개시도) 15
+yq9a16,tour_visit_city_16,한국여행 방문지(17개시도) 16
+yq9a17,tour_visit_city_17,한국여행 방문지(17개시도) 17
+yq9a18,tour_visit_city_18,한국여행 방문지(17개시도) 18
+yq9a19,tour_visit_city_19,한국여행 방문지(17개시도) 19
+yq9a20,tour_visit_city_20,한국여행 방문지(17개시도) 20
+yq9a21,tour_visit_city_21,한국여행 방문지(17개시도) 21
+yq9a22,tour_visit_city_22,한국여행 방문지(17개시도) 22
+yq9a23,tour_visit_city_23,한국여행 방문지(17개시도) 23
+yq9a24,tour_visit_city_24,한국여행 방문지(17개시도) 24
+yq9a25,tour_visit_city_25,한국여행 방문지(17개시도) 25
+yq9a26,tour_visit_city_26,한국여행 방문지(17개시도) 26
+yq9a27,tour_visit_city_27,한국여행 방문지(17개시도) 27
+yq9a28,tour_visit_city_28,한국여행 방문지(17개시도) 28
+yq9a29,tour_visit_city_29,한국여행 방문지(17개시도) 29
+yq9a30,tour_visit_city_30,한국여행 방문지(17개시도) 30
+yq9a31,tour_visit_city_31,한국여행 방문지(17개시도) 31
+yq9a32,tour_visit_city_32,한국여행 방문지(17개시도) 32
+yq9a33,tour_visit_city_33,한국여행 방문지(17개시도) 33
+yq9a34,tour_visit_city_34,한국여행 방문지(17개시도) 34
+yq9a35,tour_visit_city_35,한국여행 방문지(17개시도) 35
+yq9a36,tour_visit_city_36,한국여행 방문지(17개시도) 36
+yq9a37,tour_visit_city_37,한국여행 방문지(17개시도) 37
+yq9a38,tour_visit_city_38,한국여행 방문지(17개시도) 38
+yq9a39,tour_visit_city_39,한국여행 방문지(17개시도) 39
+yq9a40,tour_visit_city_40,한국여행 방문지(17개시도) 40
+yq9a41,tour_visit_city_41,한국여행 방문지(17개시도) 41
+yq9a42,tour_visit_city_42,한국여행 방문지(17개시도) 42
+yq9a43,tour_visit_city_43,한국여행 방문지(17개시도) 43
+yq9a44,tour_visit_city_44,한국여행 방문지(17개시도) 44
+yq9a45,tour_visit_city_45,한국여행 방문지(17개시도) 45
+yq9a46,tour_visit_city_46,한국여행 방문지(17개시도) 46
+yq9a47,tour_visit_city_47,한국여행 방문지(17개시도) 47
+yq9a48,tour_visit_city_48,한국여행 방문지(17개시도) 48
+yq9a49,tour_visit_city_49,한국여행 방문지(17개시도) 49
+yq9a50,tour_visit_city_50,한국여행 방문지(17개시도) 50
+yq9a51,tour_visit_city_51,한국여행 방문지(17개시도) 51
+yq9a52,tour_visit_city_52,한국여행 방문지(17개시도) 52
+yq9a53,tour_visit_city_53,한국여행 방문지(17개시도) 53
+yq9a54,tour_visit_city_54,한국여행 방문지(17개시도) 54
+yq9a55,tour_visit_city_55,한국여행 방문지(17개시도) 55
+yq9a56,tour_visit_city_56,한국여행 방문지(17개시도) 56
+yq9a57,tour_visit_city_57,한국여행 방문지(17개시도) 57
+yq9a58,tour_visit_city_58,한국여행 방문지(17개시도) 58
+yq9a59,tour_visit_city_59,한국여행 방문지(17개시도) 59
+yq9a60,tour_visit_city_60,한국여행 방문지(17개시도) 60
+yq9a61,tour_visit_city_61,한국여행 방문지(17개시도) 61
+yq9a62,tour_visit_city_62,한국여행 방문지(17개시도) 62
+yq9a63,tour_visit_city_63,한국여행 방문지(17개시도) 63
+yq9a64,tour_visit_city_64,한국여행 방문지(17개시도) 64
+yq9a65,tour_visit_city_65,한국여행 방문지(17개시도) 65
+yq9a66,tour_visit_city_66,한국여행 방문지(17개시도) 66
+yq9a67,tour_visit_city_67,한국여행 방문지(17개시도) 67
+yq9a68,tour_visit_city_68,한국여행 방문지(17개시도) 68
+yq9a69,tour_visit_city_69,한국여행 방문지(17개시도) 69
+yq9a70,tour_visit_city_70,한국여행 방문지(17개시도) 70
+yq9a71,tour_visit_city_71,한국여행 방문지(17개시도) 71
+yq9a72,tour_visit_city_72,한국여행 방문지(17개시도) 72
+yq9a73,tour_visit_city_73,한국여행 방문지(17개시도) 73
+yq9a74,tour_visit_city_74,한국여행 방문지(17개시도) 74
+yq9a75,tour_visit_city_75,한국여행 방문지(17개시도) 75
+yq9a76,tour_visit_city_76,한국여행 방문지(17개시도) 76
+yq9a77,tour_visit_city_77,한국여행 방문지(17개시도) 77
+yq9a78,tour_visit_city_78,한국여행 방문지(17개시도) 78
+yq9a79,tour_visit_city_79,한국여행 방문지(17개시도) 79
+yq9a80,tour_visit_city_80,한국여행 방문지(17개시도) 80
+yq9a81,tour_visit_city_81,한국여행 방문지(17개시도) 81
+yq9a82,tour_visit_city_82,한국여행 방문지(17개시도) 82
+yq9a83,tour_visit_city_83,한국여행 방문지(17개시도) 83
+yq9a84,tour_visit_city_84,한국여행 방문지(17개시도) 84
+yq9a85,tour_visit_city_85,한국여행 방문지(17개시도) 85
+yq9a86,tour_visit_city_86,한국여행 방문지(17개시도) 86
+yq9a87,tour_visit_city_87,한국여행 방문지(17개시도) 87
+yq9a88,tour_visit_city_88,한국여행 방문지(17개시도) 88
+yq9a89,tour_visit_city_89,한국여행 방문지(17개시도) 89
+yq9a90,tour_visit_city_90,한국여행 방문지(17개시도) 90
+yq9a91,tour_visit_city_91,한국여행 방문지(17개시도) 91
+yq9a92,tour_visit_city_92,한국여행 방문지(17개시도) 92
+yq9a93,tour_visit_city_93,한국여행 방문지(17개시도) 93
+yq9a94,tour_visit_city_94,한국여행 방문지(17개시도) 94
+yq9a95,tour_visit_city_95,한국여행 방문지(17개시도) 95
+yq9a96,tour_visit_city_96,한국여행 방문지(17개시도) 96
+yq9a97,tour_visit_city_97,한국여행 방문지(17개시도) 97
+yq9a98,tour_visit_city_98,한국여행 방문지(17개시도) 98
+yq9a99,tour_visit_city_99,한국여행 방문지(17개시도) 99
+grp1,tour_visit_area_1,한국여행 방문지(권역별) 1
+grp2,tour_visit_area_2,한국여행 방문지(권역별) 2
+grp3,tour_visit_area_3,한국여행 방문지(권역별) 3
+grp4,tour_visit_area_4,한국여행 방문지(권역별) 4
+grp5,tour_visit_area_5,한국여행 방문지(권역별) 5
+grp6,tour_visit_area_6,한국여행 방문지(권역별) 6
+grp7,tour_visit_area_7,한국여행 방문지(권역별) 7
+grp8,tour_visit_area_8,한국여행 방문지(권역별) 8
+grp9,tour_visit_area_9,한국여행 방문지(권역별) 9
+grp10,tour_visit_area_10,한국여행 방문지(권역별) 10
+grp11,tour_visit_area_11,한국여행 방문지(권역별) 11
+grp12,tour_visit_area_12,한국여행 방문지(권역별) 12
+grp13,tour_visit_area_13,한국여행 방문지(권역별) 13
+grp14,tour_visit_area_14,한국여행 방문지(권역별) 14
+grp15,tour_visit_area_15,한국여행 방문지(권역별) 15
+grp16,tour_visit_area_16,한국여행 방문지(권역별) 16
+grp17,tour_visit_area_17,한국여행 방문지(권역별) 17
+grp18,tour_visit_area_18,한국여행 방문지(권역별) 18
+grp19,tour_visit_area_19,한국여행 방문지(권역별) 19
+grp20,tour_visit_area_20,한국여행 방문지(권역별) 20
+grp21,tour_visit_area_21,한국여행 방문지(권역별) 21
+grp22,tour_visit_area_22,한국여행 방문지(권역별) 22
+grp23,tour_visit_area_23,한국여행 방문지(권역별) 23
+grp24,tour_visit_area_24,한국여행 방문지(권역별) 24
+grp25,tour_visit_area_25,한국여행 방문지(권역별) 25
+grp26,tour_visit_area_26,한국여행 방문지(권역별) 26
+grp27,tour_visit_area_27,한국여행 방문지(권역별) 27
+grp28,tour_visit_area_28,한국여행 방문지(권역별) 28
+grp29,tour_visit_area_29,한국여행 방문지(권역별) 29
+grp30,tour_visit_area_30,한국여행 방문지(권역별) 30
+grp31,tour_visit_area_31,한국여행 방문지(권역별) 31
+grp32,tour_visit_area_32,한국여행 방문지(권역별) 32
+grp33,tour_visit_area_33,한국여행 방문지(권역별) 33
+grp34,tour_visit_area_34,한국여행 방문지(권역별) 34
+grp35,tour_visit_area_35,한국여행 방문지(권역별) 35
+grp36,tour_visit_area_36,한국여행 방문지(권역별) 36
+grp37,tour_visit_area_37,한국여행 방문지(권역별) 37
+grp38,tour_visit_area_38,한국여행 방문지(권역별) 38
+grp39,tour_visit_area_39,한국여행 방문지(권역별) 39
+grp40,tour_visit_area_40,한국여행 방문지(권역별) 40
+grp41,tour_visit_area_41,한국여행 방문지(권역별) 41
+grp42,tour_visit_area_42,한국여행 방문지(권역별) 42
+grp43,tour_visit_area_43,한국여행 방문지(권역별) 43
+grp44,tour_visit_area_44,한국여행 방문지(권역별) 44
+grp45,tour_visit_area_45,한국여행 방문지(권역별) 45
+grp46,tour_visit_area_46,한국여행 방문지(권역별) 46
+grp47,tour_visit_area_47,한국여행 방문지(권역별) 47
+grp48,tour_visit_area_48,한국여행 방문지(권역별) 48
+grp49,tour_visit_area_49,한국여행 방문지(권역별) 49
+grp50,tour_visit_area_50,한국여행 방문지(권역별) 50
+grp51,tour_visit_area_51,한국여행 방문지(권역별) 51
+grp52,tour_visit_area_52,한국여행 방문지(권역별) 52
+grp53,tour_visit_area_53,한국여행 방문지(권역별) 53
+grp54,tour_visit_area_54,한국여행 방문지(권역별) 54
+grp55,tour_visit_area_55,한국여행 방문지(권역별) 55
+grp56,tour_visit_area_56,한국여행 방문지(권역별) 56
+grp57,tour_visit_area_57,한국여행 방문지(권역별) 57
+grp58,tour_visit_area_58,한국여행 방문지(권역별) 58
+grp59,tour_visit_area_59,한국여행 방문지(권역별) 59
+grp60,tour_visit_area_60,한국여행 방문지(권역별) 60
+grp61,tour_visit_area_61,한국여행 방문지(권역별) 61
+grp62,tour_visit_area_62,한국여행 방문지(권역별) 62
+grp63,tour_visit_area_63,한국여행 방문지(권역별) 63
+grp64,tour_visit_area_64,한국여행 방문지(권역별) 64
+grp65,tour_visit_area_65,한국여행 방문지(권역별) 65
+grp66,tour_visit_area_66,한국여행 방문지(권역별) 66
+grp67,tour_visit_area_67,한국여행 방문지(권역별) 67
+grp68,tour_visit_area_68,한국여행 방문지(권역별) 68
+grp69,tour_visit_area_69,한국여행 방문지(권역별) 69
+grp70,tour_visit_area_70,한국여행 방문지(권역별) 70
+grp71,tour_visit_area_71,한국여행 방문지(권역별) 71
+grp72,tour_visit_area_72,한국여행 방문지(권역별) 72
+grp73,tour_visit_area_73,한국여행 방문지(권역별) 73
+grp74,tour_visit_area_74,한국여행 방문지(권역별) 74
+grp75,tour_visit_area_75,한국여행 방문지(권역별) 75
+grp76,tour_visit_area_76,한국여행 방문지(권역별) 76
+grp77,tour_visit_area_77,한국여행 방문지(권역별) 77
+grp78,tour_visit_area_78,한국여행 방문지(권역별) 78
+grp79,tour_visit_area_79,한국여행 방문지(권역별) 79
+grp80,tour_visit_area_80,한국여행 방문지(권역별) 80
+grp81,tour_visit_area_81,한국여행 방문지(권역별) 81
+grp82,tour_visit_area_82,한국여행 방문지(권역별) 82
+grp83,tour_visit_area_83,한국여행 방문지(권역별) 83
+grp84,tour_visit_area_84,한국여행 방문지(권역별) 84
+grp85,tour_visit_area_85,한국여행 방문지(권역별) 85
+grp86,tour_visit_area_86,한국여행 방문지(권역별) 86
+grp87,tour_visit_area_87,한국여행 방문지(권역별) 87
+grp88,tour_visit_area_88,한국여행 방문지(권역별) 88
+grp89,tour_visit_area_89,한국여행 방문지(권역별) 89
+grp90,tour_visit_area_90,한국여행 방문지(권역별) 90
+grp91,tour_visit_area_91,한국여행 방문지(권역별) 91
+grp92,tour_visit_area_92,한국여행 방문지(권역별) 92
+grp93,tour_visit_area_93,한국여행 방문지(권역별) 93
+grp94,tour_visit_area_94,한국여행 방문지(권역별) 94
+grp95,tour_visit_area_95,한국여행 방문지(권역별) 95
+grp96,tour_visit_area_96,한국여행 방문지(권역별) 96
+grp97,tour_visit_area_97,한국여행 방문지(권역별) 97
+grp98,tour_visit_area_98,한국여행 방문지(권역별) 98
+grp99,tour_visit_area_99,한국여행 방문지(권역별) 99
+q10,stay_period_code,한국 체류기간
+mq10,stay_period_origin,한국 체류기간(원자료)
+mmq10,stay_period_origin_sysmiss,한국 체류기간(원자료/61일 이상 SYSMISS)
+q11a1,satisfied_visit_point_1,좋았던 방문지(1순위)
+q11a2,satisfied_visit_point_2,좋았던 방문지(2순위)
+q11a3,satisfied_visit_point_3,좋았던 방문지(3순위)
+q12a1,shopping_item_1,쇼핑 품목1
+q12a2,shopping_item_2,쇼핑 품목2
+q12a3,shopping_item_3,쇼핑 품목3
+q12b1,shopping_place_1,쇼핑 장소1
+q12b2,shopping_place_2,쇼핑 장소2
+q12b3,shopping_place_3,쇼핑 장소3
+q13,satisfaction_overall,한국여행에 대한 전반적 만족도
+q13a01,satisfaction_io_process,항목별 만족도_출입국 절차
+q13a02,satisfaction_transportation,항목별 만족도_대중교통
+q13a03,satisfaction_lodging,항목별 만족도_숙박
+q13a04,satisfaction_food,항목별 만족도_음식
+q13a05,satisfaction_shopping,항목별 만족도_쇼핑
+q13a06,satisfaction_charm_of_visit,항목별 만족도_관광지매력도
+q13a07,satisfaction_guide_service,항목별 만족도_관광안내서비스
+q13a08,satisfaction_communication,항목별 만족도_언어소통
+q13a09,satisfaction_expense_of_tour,항목별 만족도_여행경비
+q13a10,satisfaction_public_peace,항목별 만족도_치안
+q14,has_mind_to_revisit_in_3ys,3년내 재방문 의사
+q15,has_mind_to_recommand_tour_to_korea,한국 여행 추천 의사
+q16a,impression_of_korea_before_tour,한국여행 전 한국 이미지
+q16b,impression_of_korea_after_tour,한국여행 후 한국 이미지
+q17,kind_of_tour,여행형태
+q18a1,lodging_institution_hotel,숙박시설(호텔)
+q18a2,lodging_institution_guesthouse,숙박시설(유스호스텔/게스트하우스/여관/모텔)
+q18a3,lodging_institution_condo,숙박시설(콘도/펜션/레지던스인)
+q18a4,lodging_institution_acquaintance,숙박시설(친척/친구집)
+q18a5,lodging_institution_dormitory,숙박시설(학교/회사/기숙사/연수원)
+q18a6,lodging_institution_temple,숙박시설(사찰)
+q18a7,lodging_institution_homestay,숙박시설(홈스테이)
+q18a8,lodging_institution_etc,숙박시설(기타)
+mtzq19,expense_of_all_per_man,1인당 총경비 지출
+mtzq19a1,total_expense_of_lodging_per_man,여행전체 지출금액($)_개별 숙박비
+mtzq19a2,total_expense_of_tourist_bureau_of_own_country,여행전체 지출금액($)_거주국여행사에 지불한 경비
+mtzq19a3,total_expense_of_shopping,여행전체 지출금액($)_쇼핑비
+mtzq19a4,total_expense_of_food,여행전체 지출금액($)_식음료비
+mtzq19a5,total_expense_of_transport,여행전체 지출금액($)_현지 교통비
+mtzq19a6,total_expense_of_entertainment,여행전체 지출금액($)_오락관련지출
+mtzq19a7,total_expense_of_tourist_bureau_of_korea,여행전체 지출금액($)_한국 여행사 지불 경비
+mtzq19a8,total_expense_of_culture,여행전체 지출금액($)_문화관련지출
+mtzq19a9,total_expense_of_sports,여행전체 지출금액($)_운동관련지출
+mtzq19a10,total_expense_of_etc,여행전체 지출금액($)_기타비용
+wtzq19,total_expense_of_all_per_man,여행전체 지출금액($)_1인당 총경비 지출 (초과금액포함)
+wtzq19a1,total_expense_include_exceed_of_lodging_per_man,여행전체 지출금액($)_개별 숙박비 (초과금액포함)
+wtzq19a2,total_expense_include_exceed_of_tourist_bureau_of_own_country,여행전체 지출금액($)_거주국여행사에 지불한 경비 (초과금액포함)
+wtzq19a3,total_expense_include_exceed_of_shopping,여행전체 지출금액($)_쇼핑비 (초과금액포함)
+wtzq19a4,total_expense_include_exceed_of_food,여행전체 지출금액($)_식음료비 (초과금액포함)
+wtzq19a5,total_expense_include_exceed_of_transport,여행전체 지출금액($)_현지 교통비 (초과금액포함)
+wtzq19a6,total_expense_include_exceed_of_entertainment,여행전체 지출금액($)_오락관련지출 (초과금액포함)
+wtzq19a7,total_expense_include_exceed_of_tourist_bureau_of_korea,여행전체 지출금액($)_한국 여행사 지불 경비 (초과금액포함)
+wtzq19a8,total_expense_include_exceed_of_culture,여행전체 지출금액($)_문화관련지출 (초과금액포함)
+wtzq19a9,total_expense_include_exceed_of_sports,여행전체 지출금액($)_운동관련지출 (초과금액포함)
+wtzq19a10,total_expense_include_exceed_of_etc,여행전체 지출금액($)_기타비용 (초과금액포함)
+mzq19a0,individual_expense_all,개별여행 지출금액($)_총경비(국제항공료/선박료 제외)
+mzq19a1,individual_expense_of_lodging,개별여행 지출금액($)_개별 숙박비
+mzq19a3,individual_expense_of_shopping,개별여행 지출금액($)_쇼핑비
+mzq19a4,individual_expense_of_food,개별여행 지출금액($)_식음료비
+mzq19a5,individual_expense_of_transport,개별여행 지출금액($)_현지 교통비
+mzq19a6,individual_expense_of_entertainment,개별여행 지출금액($)_오락관련지출
+mzq19a7,individual_expense_of_tourist_bureau_of_korea,개별여행 지출금액($)_한국 여행사 지불 경비
+mzq19a8,individual_expense_of_culture,개별여행 지출금액($)_문화관련지출
+mzq19a9,individual_expense_of_sports,개별여행 지출금액($)_운동관련지출
+mzq19a10,individual_expense_of_etc,개별여행 지출금액($)_기타비용
+mzq19b0,group_expense_all,단체여행 지출금액($)_총경비
+mzq19b2,group_expense_of_tourist_bureau_of_own_country,단체여행 지출금액($)_거주국여행사에 지불한 경비
+mzq19b3,group_expense_of_shopping,단체여행 지출금액($)_쇼핑비
+mzq19b4,group_expense_of_food,단체여행 지출금액($)_식음료비
+mzq19b5,group_expense_of_transport,단체여행 지출금액($)_현지 교통비
+mzq19b6,group_expense_of_entertainment,단체여행 지출금액($)_오락관련지출
+mzq19b7,group_expense_of_tourist_bureau_of_korea,단체여행 지출금액($)_한국 여행사 지불 경비
+mzq19b8,group_expense_of_culture,단체여행 지출금액($)_문화관련지출
+mzq19b9,group_expense_of_sports,단체여행 지출금액($)_운동관련지출
+mzq19b10,group_expense_of_etc,단체여행 지출금액($)_기타비용
+wzq19a0,individual_expense_over10000_all,개별여행 지출금액(10000$ 초과 포함)_총경비(국제항공료/선박료 제외)
+wzq19a1,individual_expense_over10000_of_lodging,개별여행 지출금액(10000$ 초과 포함)_개별 숙박비
+wzq19a3,individual_expense_over10000_of_shopping,개별여행 지출금액(10000$ 초과 포함)_쇼핑비
+wzq19a4,individual_expense_over10000_of_food,개별여행 지출금액(10000$ 초과 포함)_식음료비
+wzq19a5,individual_expense_over10000_of_transport,개별여행 지출금액(10000$ 초과 포함)_현지 교통비
+wzq19a6,individual_expense_over10000_of_entertainment,개별여행 지출금액(10000$ 초과 포함)_오락관련지출
+wzq19a7,individual_expense_over10000_of_tourist_bureau_of_korea,개별여행 지출금액(10000$ 초과 포함)_한국 여행사 지불 경비
+wzq19a8,individual_expense_over10000_of_culture,개별여행 지출금액(10000$ 초과 포함)_문화관련지출
+wzq19a9,individual_expense_over10000_of_sports,개별여행 지출금액(10000$ 초과 포함)_운동관련지출
+wzq19a10,individual_expense_over10000_of_etc,개별여행 지출금액(10000$ 초과 포함)_기타비용
+wzq19b0,group_expense_over10000_all,단체여행 지출금액(10000$ 초과 포함)_총경비
+wzq19b2,group_expense_over10000_of_tourist_bureau_of_own_country,단체여행 지출금액(10000$ 초과 포함)_거주국여행사에 지불한 경비
+wzq19b3,group_expense_over10000_of_shopping,단체여행 지출금액(10000$ 초과 포함)_쇼핑비
+wzq19b4,group_expense_over10000_of_food,단체여행 지출금액(10000$ 초과 포함)_식음료비
+wzq19b5,group_expense_over10000_of_transport,단체여행 지출금액(10000$ 초과 포함)_현지 교통비
+wzq19b6,group_expense_over10000_of_entertainment,단체여행 지출금액(10000$ 초과 포함)_오락관련지출
+wzq19b7,group_expense_over10000_of_tourist_bureau_of_korea,단체여행 지출금액(10000$ 초과 포함)_한국 여행사 지불 경비
+wzq19b8,group_expense_over10000_of_culture,단체여행 지출금액(10000$ 초과 포함)_문화관련지출
+wzq19b9,group_expense_over10000_of_sports,단체여행 지출금액(10000$ 초과 포함)_운동관련지출
+wzq19b10,group_expense_over10000_of_etc,단체여행 지출금액(10000$ 초과 포함)_기타비용
+mday_av0,expense_average_daily,일일 평균 지출금액(전체)
+mday_av1,individual_expense_average_daily,일일 평균 지출금액(개별)
+mday_av2,group_expense_average_daily,일일 평균 지출금액(단체)
+mday_av3,group_air_tel_expense_average_daily,일일 평균 지출금액(Air-tel)
+chasu,month_of_examination,조사기간별(월)
