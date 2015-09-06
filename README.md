@@ -1,7 +1,7 @@
 # garageworks-reco-tour
 
 
-###### this is recommandation system (service) for foreign tourist (in korea yet)
+###### this is recommendation system (service) for foreign tourist (in korea yet)
 --
 
 ### directory description
