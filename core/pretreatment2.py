@@ -1,43 +1,48 @@
 __author__ = 'hyeongminpark'
 import csv
-raw_data_table=[]
-with open('eng_code_mapped_csv.csv', newline='') as csvfile:
-    data_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-    for count, row in enumerate(data_reader):
-        raw_data_table.append(row)
 
-raw_table=[]
-for i in range(len(raw_data_table)):
-    row = raw_data_table[i][0].split(",")
-    del row[1]
 
-    if i == 0:
-        row[0] = 'id'
+def create_raw_table_from_csv(dir):
 
-    raw_table.append(row)
+    raw_data_table=[]
+    with open(dir, newline='') as csvfile:
+        data_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        for count, row in enumerate(data_reader):
+            raw_data_table.append(row)
 
-column_index = raw_table[0]
-del raw_table[0]
+    raw_table=[]
+    for i in range(len(raw_data_table)):
+        row = raw_data_table[i][0].split(",")
+        del row[1]
 
-new_raw_table = []
-for line in raw_table:
-    new_line = []
-    for item in line:
-        if item == '':
-            new_line.append(None)
-            continue
-        try:
-            new_line.append(float(item))
-        except ValueError:
-            new_line.append(item)
-    new_raw_table.append(new_line)
+        if i == 0:
+            row[0] = 'id'
 
-raw_table = new_raw_table
+        raw_table.append(row)
+
+    column_index = raw_table[0]
+    del raw_table[0]
+
+    new_raw_table = []
+    for line in raw_table:
+        new_line = []
+        for item in line:
+            if item == '':
+                new_line.append(None)
+                continue
+            try:
+                new_line.append(float(item))
+            except ValueError:
+                new_line.append(item)
+        new_raw_table.append(new_line)
+
+    raw_table = new_raw_table
+    return column_index, raw_table
 
 ### 데이터 처리는 raw_table 과 column_index 로 수행한다.
 
 
-def column_none_ratio(col_name):
+def column_none_ratio(col_name, column_index, raw_table):
     total_count = len(raw_table)
     none_count=0
     for i in range(total_count):
@@ -52,7 +57,8 @@ def column_none_ratio(col_name):
 
     return result
 
-def column_distribution_check(col_name):
+
+def column_distribution_check(col_name, column_index, raw_table):
     total_count = len(raw_table)
     data_list = []
     for i in range(total_count):
@@ -68,23 +74,53 @@ def column_distribution_check(col_name):
 
     return (discrete_data_count, data_set)
 
-col_check_list_x = ["motive_of_tour_1",
-                    "motive_of_tour_2",
-                    "motive_of_tour_3",
-                    "accompany_with_alone",
-                    "accompany_with_family",
-                    "accompany_with_friend",
-                    "accompany_with_colleague",
-                    "accompany_with_etc",
-                    "num_accompany_origin",
-                    "stay_period_origin",
-                    "expense_of_all_per_man",
-                    "total_expense_of_lodging_per_man",
-                    "total_expense_of_shopping",
-                    "total_expense_of_food",
-                    "total_expense_of_transport",
-                    "total_expense_of_entertainment",
-                    "total_expense_of_culture"]
+
+def create_col_check_list_x():
+    col_check_list_x = ["motive_of_tour_1",
+                        "motive_of_tour_2",
+                        "motive_of_tour_3",
+                        "accompany_with_alone",
+                        "accompany_with_family",
+                        "accompany_with_friend",
+                        "accompany_with_colleague",
+                        "accompany_with_etc",
+                        "num_accompany_origin",
+                        "stay_period_origin",
+                        "expense_of_all_per_man",
+                        "total_expense_of_lodging_per_man",
+                        "total_expense_of_shopping",
+                        "total_expense_of_food",
+                        "total_expense_of_transport",
+                        "total_expense_of_entertainment",
+                        "total_expense_of_culture"]
+    return col_check_list_x
+
+
+def col_truncate(col_index_to_leave, prev_column_index, raw_table):
+    new_column_index = col_index_to_leave
+    new_table = []
+
+    for i, datapoint in enumerate(raw_table):
+        new_row = []
+        for index in new_column_index:
+            new_row.append(raw_table[i][prev_column_index.index(index)])
+        new_table.append(new_row)
+
+    return new_column_index, new_table
+
+
+def row_truncate_by_satisfaction(column_index, raw_table):
+    key_column_index = "satisfaction_overall"
+    value_list_to_leave = [1.0, 2.0]
+    ## 1:매우만족 2:만족 3:보통 4:불만 5:매우불만
+
+    new_table = []
+    for data_point in raw_table:
+        if data_point[column_index.index(key_column_index)] in value_list_to_leave:
+            new_table.append(data_point)
+
+    return column_index, new_table
+
 
 def make_input(motive_of_tour_1,        # nominal
                motive_of_tour_2,        # nominal
@@ -229,15 +265,28 @@ def make_input(motive_of_tour_1,        # nominal
     output_dict["weight_entertainment"] = weight_entertainment
     output_dict["weight_culture"] = weight_culture
 
-
     return output_dict
 
 
 def main():
-    # for col_x in col_check_list_x:
-    #     column_none_ratio(col_x)
-    #     column_distribution_check(col_x)
-    pass
+    column_index, raw_table = create_raw_table_from_csv('eng_code_mapped_csv.csv')
+    column_index, positive_table = row_truncate_by_satisfaction(column_index, raw_table)
+    col_check_list_x = create_col_check_list_x()
+    trc_col_ind, trc_tbl = col_truncate(col_check_list_x, column_index, raw_table)
+
+
+    ### test code
+
+    print("%d X %d mat"%(len(trc_tbl), len(trc_tbl[0])))
+
+    # print(trc_col_ind[2])
+    # for i in range(100):
+    #     print(str(trc_tbl[i][trc_col_ind.index(trc_col_ind[0])]) + " " + str(raw_table[i][column_index.index(trc_col_ind[0])]))
+
+    # print(len(trc_tbl[0]))
+    # for x in col_check_list_x:
+    #     column_none_ratio(x, column_index, raw_table)
+    #     column_distribution_check(x, column_index, raw_table)
 
 
 main()
