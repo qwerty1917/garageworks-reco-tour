@@ -1,6 +1,11 @@
+#-*- coding: utf-8 -*-
 __author__ = 'hyeongminpark'
 import csv
+import time
+from random import shuffle
 
+### 상수
+EXPENSE_OF_ALL_PER_MAN_MEAN = 1436.4
 
 def create_raw_table_from_csv(dir):
 
@@ -28,7 +33,7 @@ def create_raw_table_from_csv(dir):
         new_line = []
         for item in line:
             if item == '':
-                new_line.append(None)
+                new_line.append(0)
                 continue
             try:
                 new_line.append(float(item))
@@ -69,11 +74,16 @@ def column_distribution_check(col_name, column_index, raw_table):
     print("\n===== column_distribution_check ======")
     print("** col name: %s"%col_name)
     print("** data set: %s"%str(data_set))
-    print("** data discrete: %d"%discrete_data_count)
+    print("** discrete data: %d"%discrete_data_count)
+    print("** data distribution: ")
+    for item in data_set:
+        print("    %s : %0.2f%%, %d times"%(str(item), item_in_list_ratio_in_percent(item, data_list), data_list.count(item)))
     print("================ end =================\n")
 
     return (discrete_data_count, data_set)
 
+def item_in_list_ratio_in_percent(item, list):
+    return 100*list.count(item)/len(list)
 
 def create_col_check_list_x():
     col_check_list_x = ["motive_of_tour_1",
@@ -93,17 +103,27 @@ def create_col_check_list_x():
                         "total_expense_of_transport",
                         "total_expense_of_entertainment",
                         "total_expense_of_culture"]
-    return col_check_list_x
+
+    tour_visit_points = ["tour_visit_point_"+str(i) for i in range(1, 34)]
+    tour_visit_cities = ["tour_visit_city_"+str(i) for i in range(1, 100)]
+    tour_visit_areas = ["tour_visit_area_"+str(i) for i in range(1, 100)]
+
+    return col_check_list_x, tour_visit_points, tour_visit_cities, tour_visit_areas
 
 
 def col_truncate(col_index_to_leave, prev_column_index, raw_table):
-    new_column_index = col_index_to_leave
+    print("raw_table len: " + str(len(raw_table)))
+    new_column_index = []
     new_table = []
 
-    for i, datapoint in enumerate(raw_table):
+    for cherry_col in col_index_to_leave:
+        if cherry_col in prev_column_index:
+            new_column_index.append(cherry_col)
+
+    for row in raw_table:
         new_row = []
-        for index in new_column_index:
-            new_row.append(raw_table[i][prev_column_index.index(index)])
+        for cherry_col in new_column_index:
+            new_row.append(row[prev_column_index.index(cherry_col)])
         new_table.append(new_row)
 
     return new_column_index, new_table
@@ -111,8 +131,8 @@ def col_truncate(col_index_to_leave, prev_column_index, raw_table):
 
 def row_truncate_by_satisfaction(column_index, raw_table):
     key_column_index = "satisfaction_overall"
-    value_list_to_leave = [1.0, 2.0]
-    ## 1:매우만족 2:만족 3:보통 4:불만 5:매우불만
+    value_list_to_leave = [4.0, 5.0]
+    ## 1:매우불만 2:불만 3:보통 4:만족 5:매우만족
 
     new_table = []
     for data_point in raw_table:
@@ -133,12 +153,12 @@ def make_input(motive_of_tour_1,        # nominal
                expense_of_all_per_man,  # ratio
 
                                         ## 가중치는 5단계(0,1,2,3,4,5) <- 가중치 0이 제외된 항목임.
-               weight_lodging,          # ratio
-               weight_shopping,         # ratio
-               weight_food,             # ratio
-               weight_transport,        # ratio
-               weight_entertainment,    # ratio
-               weight_culture           # ratio
+               weight_lodging,          # ordinal
+               weight_shopping,         # ordinal
+               weight_food,             # ordinal
+               weight_transport,        # ordinal
+               weight_entertainment,    # ordinal
+               weight_culture           # ordinal
                ):
     """
     input parameter:
@@ -146,7 +166,7 @@ def make_input(motive_of_tour_1,        # nominal
         motive_of_tour_1
         motive_of_tour_2
         motive_of_tour_3
-            range of motive_of_tour_1~3 : [None, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 97]
+            range of motive_of_tour_1~3 : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 97]
 
         accompany_kind
             range of accompany_kind : [1, 2, 3, 4, 5]
@@ -192,7 +212,7 @@ def make_input(motive_of_tour_1,        # nominal
 
     #### parameter 검사
 
-    motivation_code_list = [None, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 97]
+    motivation_code_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 97]
     accompany_kind_code_list = [1, 2, 3, 4, 5]
     weight_code_list = [0, 1, 2, 3, 4, 5]
     if (motive_of_tour_1 not in motivation_code_list) or \
@@ -226,58 +246,199 @@ def make_input(motive_of_tour_1,        # nominal
     #### parameter 검사 끝
 
 
-    output_dict = {}
+    input_dict = {}
 
-    output_dict["motive_of_tour_1"] = motive_of_tour_1
-    output_dict["motive_of_tour_2"] = motive_of_tour_2
-    output_dict["motive_of_tour_3"] = motive_of_tour_3
+    input_dict["motive_of_tour_1"] = motive_of_tour_1
+    input_dict["motive_of_tour_2"] = motive_of_tour_2
+    input_dict["motive_of_tour_3"] = motive_of_tour_3
 
-    output_dict["accompany_with_alone"] \
-    = output_dict["accompany_with_family"] \
-    = output_dict["accompany_with_friend"] \
-    = output_dict["accompany_with_colleague"] \
-    = output_dict["accompany_with_etc"] = None
+    input_dict["accompany_with_alone"] \
+    = input_dict["accompany_with_family"] \
+    = input_dict["accompany_with_friend"] \
+    = input_dict["accompany_with_colleague"] \
+    = input_dict["accompany_with_etc"] = None
 
     if accompany_kind == 1:
-        output_dict["accompany_with_alone"] = 1.0
+        input_dict["accompany_with_alone"] = 1.0
     elif accompany_kind == 2:
-        output_dict["accompany_with_family"] = 2.0
+        input_dict["accompany_with_family"] = 2.0
     elif accompany_kind == 3:
-        output_dict["accompany_with_friend"] = 3.0
+        input_dict["accompany_with_friend"] = 3.0
     elif accompany_kind == 4:
-        output_dict["accompany_with_colleague"] = 4.0
+        input_dict["accompany_with_colleague"] = 4.0
     elif accompany_kind == 5:
-        output_dict["accompany_with_etc"] = 5.0
+        input_dict["accompany_with_etc"] = 5.0
     else:
         pass
 
-    output_dict["num_accompany_origin"] = 1
+    input_dict["num_accompany_origin"] = 1
     if accompany_num != None:
-        output_dict["num_accompany_origin"] = accompany_num
+        input_dict["num_accompany_origin"] = accompany_num
 
-    output_dict["stay_period_origin"] = stay_period
-    output_dict["expense_of_all_per_man"] = expense_of_all_per_man
+    input_dict["stay_period_origin"] = stay_period
+    input_dict["expense_of_all_per_man"] = expense_of_all_per_man
 
-    output_dict["weight_lodging"] = weight_lodging
-    output_dict["weight_shopping"] = weight_shopping
-    output_dict["weight_food"] = weight_food
-    output_dict["weight_transport"] = weight_transport
-    output_dict["weight_entertainment"] = weight_entertainment
-    output_dict["weight_culture"] = weight_culture
+    input_dict["weight_lodging"] = weight_lodging
+    input_dict["weight_shopping"] = weight_shopping
+    input_dict["weight_food"] = weight_food
+    input_dict["weight_transport"] = weight_transport
+    input_dict["weight_entertainment"] = weight_entertainment
+    input_dict["weight_culture"] = weight_culture
 
-    return output_dict
+    return input_dict
+
+
+def diviner(input_dict,             # input x dict
+
+            total_col_index,         # x total index
+
+            data_table,             # data table
+
+            tour_visit_points,      # y detail index
+            tour_visit_cities,
+            tour_visit_areas,):
+
+    # print("total_col_index len: " + str(len(total_col_index)) + ", data_table col num: " + str(len(data_table[0])))
+
+    nominal_x_list = ["motive_of_tour_1",
+                      "motive_of_tour_2",
+                      "motive_of_tour_3",
+                      "accompany_with_alone",
+                      "accompany_with_family",
+                      "accompany_with_friend",
+                      "accompany_with_colleague",
+                      "accompany_with_etc"]
+
+    ratio_x_list = ["num_accompany_origin",
+                    "stay_period_origin",
+                    "expense_of_all_per_man"]
+
+    ordinal_weight_list = ["weight_lodging",
+                           "weight_shopping",
+                           "weight_food",
+                           "weight_transport",
+                           "weight_entertainment",
+                           "weight_culture"]
+
+    # ratio 컬럼들 정규화
+    print("start normalization")
+    normalization_start_time = time.time()
+    for ratio_col in ratio_x_list:
+        print(ratio_col)
+        single_col_data_list = []
+        for row in data_table:
+            single_col_data_list.append(row[total_col_index.index(ratio_col)])
+        print("single_col_data_list len: " + str(len(single_col_data_list)))
+
+        input_dict[ratio_col] = normalization(input_dict[ratio_col], single_col_data_list)
+        for i in range(len(data_table)):
+            data_table[i][total_col_index.index(ratio_col)] = normalization(data_table[i][total_col_index.index(ratio_col)], single_col_data_list)
+    normalization_end_time = time.time()
+    print("end normalization")
+    print("time on normalization: " + str(normalization_end_time - normalization_start_time))
+
+
+    print("starting kNN")
+    kNN_start_time = time.time()
+    # ratio 기준으로 가장 가까운 포인트 50개 구한다.
+    best50_table = []
+    dists_in_best50 = []
+    total_d = d_len = 0 #test code
+    for row in data_table:
+        dsq = 0
+        # print("==== "+ratio_col+" ====")
+        for ratio_col in ratio_x_list:
+            if row[total_col_index.index(ratio_col)] != None and input_dict[ratio_col] != None:
+                tmp_dsq = (row[total_col_index.index(ratio_col)] - input_dict[ratio_col])**2
+                dsq = dsq + tmp_dsq
+            else:
+                dsq = 100
+                continue
+                # print("dist for "+ratio_col +" : "+str(tmp_dsq**(1/2)))
+        # print("========")
+
+        d = dsq**(1/2)
+        if len(best50_table) < 50:
+            best50_table.append(row)
+            dists_in_best50.append(d)
+
+        elif d < max(dists_in_best50):
+            index_to_del = dists_in_best50.index(max(dists_in_best50))
+            del best50_table[index_to_del]
+            del dists_in_best50[index_to_del]
+
+            best50_table.append(row)
+            dists_in_best50.append(d)
+
+        total_d = total_d + d #test code
+        d_len = d_len + 1
+    print("d mean : " + str(total_d/d_len))
+    print("best d list: " + str(dists_in_best50))
+    kNN_end_time = time.time()
+    print("ending kNN")
+    print("time on kNN: " + str(kNN_end_time - kNN_start_time))
+
+
+    # 위의 50개 포인트 중 nominal, ordinal 를 기준으로 순위를 정한다. table: best50_table, index: total_col_index
+
+
+
+    # 위로부터 적당히 잘라서 목적지 반환
+
+
+
+
+    pass
+
+
+def normalization(x, raw_list):
+    if None in raw_list:
+        new_list = raw_list.remove(None)
+    else:
+        new_list = raw_list
+    return (x - min(new_list))/(max(new_list) - min(new_list))
+
+
+def denormalization(z, raw_list):
+    if None in raw_list:
+        new_raw_list = raw_list.remove(None)
+    else:
+        new_raw_list = raw_list
+    return z*(max(new_raw_list) - min(new_raw_list)) + min(new_raw_list)
 
 
 def main():
+    total_time_start = time.time()
     column_index, raw_table = create_raw_table_from_csv('eng_code_mapped_csv.csv')
+
+    ### 데이터 너무 커서 임시로 자름!
+    shuffle(raw_table)
+    raw_table=raw_table[:1000]
+    ### 이까지
+
+    print("raw data len: " + str(len(raw_table)))
     column_index, positive_table = row_truncate_by_satisfaction(column_index, raw_table)
-    col_check_list_x = create_col_check_list_x()
-    trc_col_ind, trc_tbl = col_truncate(col_check_list_x, column_index, raw_table)
+    print("positive data col num: "+ str(len(positive_table[0])) + ", index len : " + str(len(column_index)))
+    print("positive datapoint: " + str(len(positive_table)))
+
+    col_check_list_x, tour_visit_points, tour_visit_cities, tour_visit_areas = create_col_check_list_x()
+
+    new_col_ind = col_check_list_x + tour_visit_points + tour_visit_cities + tour_visit_areas
+    print("new_col_ind len: "+ str(len(new_col_ind)) + ", set len: " + str(len(set(new_col_ind)))) # 지역, 도시 코드가 1~100 모두 다 있는것은 아니라 좀 더 많아짐
+
+    trc_col_ind, trc_tbl = col_truncate(new_col_ind, column_index, positive_table)
+    print(len(trc_col_ind), len(trc_tbl[0]))
+
+    diviner(make_input(4, 5, 6, 2, 5, 14, 2000, 0, 0, 0, 3, 4, 5), trc_col_ind, trc_tbl, tour_visit_points, tour_visit_cities, tour_visit_areas)
 
 
     ### test code
 
     print("%d X %d mat"%(len(trc_tbl), len(trc_tbl[0])))
+
+
+
+    # column_distribution_check("motive_of_tour_2", column_index, raw_table)
 
     # print(trc_col_ind[2])
     # for i in range(100):
@@ -287,6 +448,7 @@ def main():
     # for x in col_check_list_x:
     #     column_none_ratio(x, column_index, raw_table)
     #     column_distribution_check(x, column_index, raw_table)
-
+    total_time_end = time.time()
+    print("total time: " + str(total_time_end-total_time_start))
 
 main()
