@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-from django_ajax.decorators import ajax
 
 from .models import Question, Choice
 from .forms import (AccompanyForm, AccompanyNumForm, StayPeriodForm,
@@ -17,7 +16,7 @@ def welcome(request):
 
     # clear the request session
     request.session.clear()
-    
+
     return render(request, 'toureco_app/welcome.html', ctx)
 
 
