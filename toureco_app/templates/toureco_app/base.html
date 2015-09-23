@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Toureco</title>
+        <link rel="stylesheet" href="{% static 'toureco_app/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'toureco_app/css/font.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'toureco_app/css/button.css' %}" media="screen" title="no title" charset="utf-8">
+        <script type="text/javascript" src="{% static 'toureco_app/js/lib/jquery-1.11.3.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'toureco_app/js/lib/jquery-ui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'toureco_app/js/toureco_action.js' %}"></script>
+    </head>
+    <body>
+        {% block container %}
+        {% endblock %}
+    </body>
+</html>

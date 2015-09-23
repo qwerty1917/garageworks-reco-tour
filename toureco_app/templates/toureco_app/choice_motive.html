@@ -1,0 +1,28 @@
+{% extends 'toureco_app/choice_contents.html' %}
+
+{% block choice_contents %}
+<div id="choice-contents">
+    <div class="contents-center font-trench">
+        <p class="choice-title font-clr-white font-20p">
+            Select your motivations (only 3)
+        </p>
+        <form class="" action="{% url 'toureco_app:choice' next_count %}" method="post">
+            <div class="padding-md border-round-sm font-bold font-30p font-clr-white">
+                {{ form.motive_of_tour }}
+            </div>
+            <a class="btn-finish btn btn-regular btn-clr-deep-blue margin-tb-sm font-clr-white font-bold font-20p hover-fade" href="javascript:">Finish?</a>
+            <p class="margin-top-none font-clr-green">
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            {{ error|escape }}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <input class="next-action btn btn-regular btn-clr-green margin-tb-sm font-clr-white font-20p hover-fade hide"
+                type="submit" value="next"/>
+        </form>
+    </div>
+</div>
+{% endblock %}

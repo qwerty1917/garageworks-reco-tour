@@ -1,0 +1,14 @@
+{% extends "toureco_app/base.html" %}
+
+{% block container %}
+    {% block contents %}
+        <div class="contents-container">
+            <div class="use-background">
+            </div>
+            <div class="background-mask background-mask-deep">
+                {% block choice_contents %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
