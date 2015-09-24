@@ -15,10 +15,11 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'toureco_app/static/toureco_app/'),
+    os.path.join(BASE_DIR, 'static/'),
+    '/toureco_app/static/toureco_app/',
 )
 
 # Quick-start development settings - unsuitable for production
