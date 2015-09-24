@@ -22,6 +22,8 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, '../static'),
 )
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
