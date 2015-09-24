@@ -43,3 +43,13 @@ key of output dict:
     "area_reco" : 권역별 한국여행 관광지 (길이가 유동적으로 변함. 최대 10개 보통. 5개 내외)
     "point_reco" : 한국여행 관광지 (이론적으로는 최대 30개 추천함. - 하지만 거의 항상 30개라고 보면 됨. 잘 안변함.)
     """
+
+import code_map
+print( "code2point ex: " + code_map.code2point(52) )
+print( "code2city ex: " + code_map.code2city(7) )
+print( "code2area ex: " + code_map.code2area(4) )
+"""
+사용방법: code_map.py와 point_code.scv 두 파일을 호출하고자 하는 파이썬 파일 (아마도 콘트롤러와 같은 디렉토리에)에 두고 위와 같이 임포트 하여 호출.
+입력: 지역코드(관광지 코드는 code2point에, 17개시도 코드는 code2city에, 권역별 코드는 code2area에 줘야한다.)
+출력: 문자열(예시 - 관광지 코드: 정선(하이원/강원랜드), 17개시도: 대전, 권역별: 강원)
+"""
