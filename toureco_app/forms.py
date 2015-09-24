@@ -46,28 +46,7 @@ class MotiveForm(forms.Form):
         validators=[validate_only_3_select],
         widget=forms.SelectMultiple(attrs={'size': len(choice.choice_motive) + 2,
             'multiple': 'multiple', 'class': 'limit-select'}))
-
-
-class Moitve1Form(forms.Form):
-    motive_of_tour_1 = forms.ChoiceField(choices=choice.choice_accompany,
-        required=True, help_text='select motive',
-        error_messages={'required': 'select please'},
-        widget=forms.Select(attrs={'size': len(choice.choice_accompany) + 1}))
-
-
-class Moitve2Form(forms.Form):
-    motive_of_tour_2 = forms.ChoiceField(choices=choice.choice_accompany,
-        required=True, help_text='select motive',
-        error_messages={'required': 'select please'},
-        widget=forms.Select(attrs={'size': len(choice.choice_accompany) + 1}))
-
-
-class Moitve3Form(forms.Form):
-    motive_of_tour_3 = forms.ChoiceField(choices=choice.choice_accompany,
-        required=True, help_text='select motive',
-        error_messages={'required': 'select please'},
-        widget=forms.Select(attrs={'size': len(choice.choice_accompany) + 1}))
-
+            
 
 class ExpenseForm(forms.Form):
     expense_of_all_per_man = forms.IntegerField(required=True, help_text='type expense',

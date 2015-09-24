@@ -22,12 +22,12 @@ def welcome(request):
 
 # choice conditions on multiple-level
 def choice(request, next_count):
-    forms = [AccompanyForm, AccompanyNumForm, StayPeriodForm, MotiveForm,
+    forms = [None, AccompanyForm, AccompanyNumForm, StayPeriodForm, MotiveForm,
         ExpenseForm]
-    response_pages = ['choice_accompany.html', 'choice_accompany_num.html',
+    response_pages = [None, 'choice_accompany.html', 'choice_accompany_num.html',
         'choice_stay_period.html', 'choice_motive.html','choice_expense.html']
 
-    counter = int(next_count)-1
+    counter = int(next_count)
 
     form = None
     ctx = None
@@ -43,8 +43,10 @@ def choice(request, next_count):
                         request.session['_'.join([key, str(idx + 1)])] = value[idx]
                 else:
                     request.session[key] = value
-            print request.session.items()
+                print request.session.items()
             counter += 1
+
+            return redirect('toureco_app:choice', next_count=counter)
         else:
             is_error = True
 
@@ -53,6 +55,6 @@ def choice(request, next_count):
 
     response_page = '/'.join(['toureco_app', response_pages[counter]])
 
-    ctx = {'form': form, 'next_count': counter + 1}
+    ctx = {'form': form, 'next_count': counter}
 
     return render(request, response_page, ctx)
