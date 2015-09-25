@@ -4,7 +4,7 @@ from django.views import generic
 
 from .models import Question, Choice
 from .forms import (AccompanyForm, AccompanyNumForm, StayPeriodForm,
-    MotiveForm, ExpenseForm)
+    MotiveForm, ExpenseForm, WeightForm)
 from .choice import choice_accompany
 
 def index(request):
@@ -23,9 +23,10 @@ def welcome(request):
 # choice conditions on multiple-level
 def choice(request, next_count):
     forms = [None, AccompanyForm, AccompanyNumForm, StayPeriodForm, MotiveForm,
-        ExpenseForm]
+        ExpenseForm, WeightForm]
     response_pages = [None, 'choice_accompany.html', 'choice_accompany_num.html',
-        'choice_stay_period.html', 'choice_motive.html','choice_expense.html']
+        'choice_stay_period.html', 'choice_motive.html','choice_expense.html',
+        'choice_weight.html']
 
     counter = int(next_count)
 

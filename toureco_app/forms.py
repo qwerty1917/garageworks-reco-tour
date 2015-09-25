@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django import forms
+from .widget import RangeInput
 import choice
 
 
@@ -52,3 +53,24 @@ class ExpenseForm(forms.Form):
     expense_of_all_per_man = forms.IntegerField(required=True, help_text='type expense',
         error_messages={'required': 'type please'},
         min_value=0, validators=[validate_non_negative])
+
+
+class WeightForm(forms.Form):
+    weight_lodging = forms.IntegerField(min_value=0, max_value=5,
+        help_text="lodging",
+        widget=RangeInput(attrs={'max': 5, 'min': 0, 'value': 0}))
+    weight_shopping = forms.IntegerField(min_value=0, max_value=5,
+        help_text="shopping",
+        widget=RangeInput(attrs={'max': 5, 'min': 0, 'value': 0}))
+    weight_food = forms.IntegerField(min_value=0, max_value=5,
+        help_text="food",
+        widget=RangeInput(attrs={'max': 5, 'min': 0, 'value': 0}))
+    weight_transport = forms.IntegerField(min_value=0, max_value=5,
+        help_text="transport",
+        widget=RangeInput(attrs={'max': 5, 'min': 0, 'value': 0}))
+    weight_entertainment = forms.IntegerField(min_value=0, max_value=5,
+        help_text="entertainment",
+        widget=RangeInput(attrs={'max': 5, 'min': 0, 'value': 0}))
+    weight_culture = forms.IntegerField(min_value=0, max_value=5,
+        help_text="culture",
+        widget=RangeInput(attrs={'max': 5, 'min': 0, 'value': 0}))
