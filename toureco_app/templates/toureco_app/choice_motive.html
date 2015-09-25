@@ -8,7 +8,16 @@
         </p>
         <form class="form-select-multiple-motives" action="{% url 'toureco_app:choice' next_count %}" method="post">
             <div class="padding-md border-round-sm font-bold font-30p font-clr-white">
-                {{ form.motive_of_tour }}
+                <div class="hide">
+                    {{ form.motive_of_tour }}
+                </div>
+                <ul class="select-list" multiple="multiple">
+                    {% for value, name in form.motive_of_tour.field.choices %}
+                        <li class="option-item" data-value="{{ value }}">
+                            {{ name }}
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             <a class="btn-finish btn btn-regular btn-clr-deep-blue margin-tb-sm font-clr-white font-20p hover-fade hide" href="javascript:">Finish?</a>
             <a class="btn-up btn btn-regular btn-clr-deep-blue margin-tb-sm font-clr-white font-20p hover-fade hide">Rank up</a>
@@ -21,7 +30,7 @@
                     {% endfor %}
                 {% endif %}
             </p>
-            <button class="next-action btn btn-regular btn-clr-green margin-tb-sm font-clr-white font-trench font-20p hover-fade">
+            <button class="next-action btn btn-regular btn-clr-green margin-tb-sm font-clr-white font-trench font-20p hover-fade hide">
                 next
             </button>
         </form>

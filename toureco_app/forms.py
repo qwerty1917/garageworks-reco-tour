@@ -24,7 +24,7 @@ class AccompanyForm(forms.Form):
     accompany_kind = forms.ChoiceField(choices=choice.choice_accompany,
         required=True, help_text='select accompany',
         error_messages={'required': 'select please'},
-        widget=forms.Select(attrs={'size': len(choice.choice_accompany) + 1}))
+        widget=forms.Select(attrs={'class': 'choice'}))
 
 
 class AccompanyNumForm(forms.Form):
@@ -45,8 +45,8 @@ class MotiveForm(forms.Form):
         error_messages={'required': 'select 3 motives'},
         validators=[validate_only_3_select],
         widget=forms.SelectMultiple(attrs={'size': len(choice.choice_motive) + 2,
-            'multiple': 'multiple', 'class': 'limit-select'}))
-            
+            'multiple': 'multiple', 'class': 'choice limit-select'}))
+
 
 class ExpenseForm(forms.Form):
     expense_of_all_per_man = forms.IntegerField(required=True, help_text='type expense',

@@ -8,7 +8,16 @@
         </p>
         <form class="" action="{% url 'toureco_app:choice' next_count %}" method="post">
             <div class="padding-md border-round-sm font-bold font-30p font-clr-white">
-                {{ form.accompany_kind }}
+                <div class="hide">
+                    {{ form.accompany_kind }}
+                </div>
+                <ul class="select-list">
+                    {% for value, name in form.accompany_kind.field.choices %}
+                        <li class="option-item" data-value="{{ value }}">
+                            {{ name }}
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             <p class="margin-top-none font-clr-green">
                 {% if form.errors %}

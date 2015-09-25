@@ -7,6 +7,13 @@ html, body {
     padding: 0;
 }
 
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+}
+
 a {
     text-decoration: none;
 }
@@ -125,11 +132,11 @@ select {
     outline: none;
 }
 
-option {
+.option-item {
     display: block;
     width: 200px;
     margin: 5px auto;
-    padding: 8px 0;
+    padding: 10px 0;
     background: none;
     border: none;
     border-radius: 8px;
@@ -140,10 +147,18 @@ option {
     outline: none;
 }
 
-option:focus,
-option:hover,
-option:active,
-option:checked {
+.option-item:focus,
+.option-item:hover,
+.option-item:active,
+.option-item:checked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.option-item-selected,
+.option-item-selected:focus,
+.option-item-selected:hover,
+.option-item-selected:active,
+.option-item-selected:checked {
     color: #000;
     background: #16a085;
 }
