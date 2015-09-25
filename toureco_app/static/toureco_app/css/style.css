@@ -121,11 +121,11 @@ button {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.45);
 }
 
 .background-mask-deep {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 /* toureco css :: choice */
