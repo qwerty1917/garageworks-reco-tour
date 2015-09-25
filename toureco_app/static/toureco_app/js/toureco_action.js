@@ -36,7 +36,7 @@ $(document).ready(function(){
             if (!finish)
                 $('.btn-finish').show('fast');
 
-            $('.btn-finish').on('click', function(){
+            $('.btn-finish').unbind().click(function(){
                 finish = true;
 
                 $('.btn-finish').hide('fast');
@@ -45,7 +45,7 @@ $(document).ready(function(){
                 $('.btn-up').show('fast');
 
                 $('.limit-select').find('option:not(:selected)').remove();
-                $('.select-list').find('.option-item').not('.option-item-selected').remove();
+                $('.select-list').find('.option-item:not(.option-item-selected)').remove()
                 $('.select-list').find('.option-item').removeClass('option-item-selected');
                 $('.select-list').removeAttr('multiple');
             });
