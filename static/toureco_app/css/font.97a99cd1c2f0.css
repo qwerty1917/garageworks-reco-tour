@@ -1,0 +1,36 @@
+@font-face {
+    font-family: Trench;
+    src: url("../fonts/Trench.df3916d69b60.eot");
+    src: local('Trench'), url("../fonts/Trench.8f6b13b103c7.woff") format('woff'),
+            url("../fonts/Trench.985f2a0563a5.otf") format('opentype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+.font-trench {
+    font-family: Trench;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.font-15p {
+    font-size: 15px;
+}
+
+.font-20p {
+    font-size: 20px;
+}
+
+.font-30p {
+    font-size: 30px;
+}
+
+.font-clr-green {
+    color: #16a085;
+}
+
+.font-clr-white {
+    color: #ffffff;
+}
