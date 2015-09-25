@@ -206,6 +206,7 @@ select {
 .middle-block {
     content: "";
     display: inline-block;
+    min-width: 380px;
     vertical-align: middle;
     height: 100%;
 }
