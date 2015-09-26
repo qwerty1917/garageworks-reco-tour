@@ -3,12 +3,18 @@ __author__ = 'hyeongminpark'
 import csv
 
 point_table = []
-with open("point_code.csv", newline='') as csvfile:
-    data_reader = csv.reader(csvfile)
-    for row in data_reader:
-        # row[0] = int(row[0])
-        # row[1] = row[1].strip()
-        row = [int(row[0]), row[1].strip()]
+# with open("point_code.csv", newline='') as csvfile:
+#     data_reader = csv.reader(csvfile)
+#     for row in data_reader:
+#         # row[0] = int(row[0])
+#         # row[1] = row[1].strip()
+#         row = [int(row[0]), row[1].strip()]
+#         point_table.append(row[0:2])
+
+with open('point_code.csv', 'rb') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    for row in spamreader:
+        row = [int(row[0]), row[1].strip().decode('UTF-8')]
         point_table.append(row[0:2])
 
 

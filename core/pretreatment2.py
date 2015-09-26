@@ -12,10 +12,17 @@ DATA_TRUNCATE = 2000
 def create_raw_table_from_csv(dir):
 
     raw_data_table=[]
-    with open(dir, newline='') as csvfile:
+    # with open(dir, newline='') as csvfile:
+    #     data_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    #     for count, row in enumerate(data_reader):
+    #         raw_data_table.append(row)
+
+    with open(dir, 'rb') as csvfile:
         data_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-        for count, row in enumerate(data_reader):
+        for row in data_reader:
             raw_data_table.append(row)
+            # row = [int(row[0]), row[1].strip().decode('UTF-8')]
+            # point_table.append(row[0:2])
 
     raw_table=[]
     for i in range(len(raw_data_table)):
