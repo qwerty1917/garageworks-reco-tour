@@ -1,0 +1,16 @@
+{% extends 'toureco_app/choice_contents.html' %}
+
+{% block choice_contents %}
+<div id="choice-contents">
+    <div class="contents-center font-trench">
+        <div class="description-intro margin-tb-sm padding-md border-round-sm font-bold font-30p font-clr-white">
+            Welcome to Toureco! <br/><br/>
+            Choose and Tour!
+        </div>
+        <button class="btn btn-regular btn-clr-green margin-tb-sm border-round-sm font-clr-white font-trench font-bold font-20p hover-fade"
+            onclick='location.href="{% url 'toureco_app:choice' next_count %}"'>
+            next
+        </button>
+    </div>
+</div>
+{% endblock %}

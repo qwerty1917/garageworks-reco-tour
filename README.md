@@ -1,8 +1,10 @@
 # garageworks-reco-tour
 
+###### this is recommendation system (service) for foreign tourist (in korea yet)
+URL : https://mighty-taiga-1972.herokuapp.com
 
-###### this is recommandation system (service) for foreign tourist (in korea yet)
 --
+
 
 ### directory description
 - code-book : column, key code table (include description)

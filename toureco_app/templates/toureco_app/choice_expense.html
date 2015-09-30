@@ -1,0 +1,28 @@
+{% extends 'toureco_app/choice_contents.html' %}
+
+{% block choice_contents %}
+<div id="choice-contents">
+    <div class="contents-center font-trench">
+        <p class="choice-title font-clr-white font-20p">
+            Type expected expense ($ / man)
+        </p>
+        <form class="" action="{% url 'toureco_app:choice' next_count %}" method="post">
+            <div class="padding-md border-round-sm font-bold font-30p font-clr-white">
+                {{ form.expense_of_all_per_man }}
+            </div>
+            <p class="margin-top-none font-clr-green">
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            {{ error|escape }}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <button class="next-action btn btn-regular btn-clr-green margin-tb-sm font-clr-white font-trench font-20p hover-fade">
+                next
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

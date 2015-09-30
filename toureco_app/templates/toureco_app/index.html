@@ -1,0 +1,22 @@
+{% extends "toureco_app/base.html" %}
+
+{% block container %}
+    {% block contents %}
+        <div class="contents-container">
+            <div class="use-background">
+
+            </div>
+            <div class="background-mask">
+                <div class="contents-center font-trench">
+                    <div class="description-intro margin-tb-sm padding-md border-round-sm font-bold font-30p font-clr-white">
+                        T O U R E C O
+                    </div>
+                    <button id="btn-start" class="btn btn-regular btn-clr-green margin-tb-sm border-round-sm font-clr-white font-trench font-20p hover-fade"
+                        onclick='location.href="{% url 'toureco_app:welcome' %}"'>
+                        Let's Go Tours!
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
