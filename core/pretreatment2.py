@@ -297,6 +297,23 @@ def make_input(motive_of_tour_1,        # nominal
     return input_dict
 
 
+def rankList(list):
+    resultList = []
+    rankDict = {}
+    listSet = set(list)
+    for i in listSet:
+        rankDict[i] = list.count(i)
+
+    # print(rankDict)
+
+    while len(rankDict) != 0:
+        maxKey = max(rankDict.iteritems(), key=itemgetter(1))[0]
+        resultList.append(maxKey)
+        rankDict.pop(maxKey, None)
+
+    return resultList
+
+
 def diviner(input_dict,             # input x dict
 
             total_col_index,         # x total index
@@ -500,36 +517,10 @@ def diviner(input_dict,             # input x dict
     cities_final_list = [int(i) for i in cities_final_list]
     areas_final_list = [int(i) for i in areas_final_list]
 
-    points_final_list = sorted(points_final_list, key=points_final_list.count, reverse=True)
-    cities_final_list = sorted(cities_final_list, key=cities_final_list.count, reverse=True)
-    areas_final_list = sorted(areas_final_list, key=areas_final_list.count, reverse=True)
+    point_reco = rankList(points_final_list)
+    city_reco = rankList(cities_final_list)
+    area_reco = rankList(areas_final_list)
 
-    point_tmp = 0
-    point_reco = []
-    for item in points_final_list:
-        if item == point_tmp:
-            pass
-        else:
-            point_tmp = item
-            point_reco.append(item)
-
-    city_tmp = 0
-    city_reco = []
-    for item in cities_final_list:
-        if item == city_tmp:
-            pass
-        else:
-            city_tmp = item
-            city_reco.append(item)
-
-    area_tmp = 0
-    area_reco = []
-    for item in areas_final_list:
-        if item == area_tmp:
-            pass
-        else:
-            area_tmp = item
-            area_reco.append(item)
 
     # print(point_reco[2:32])
     # print(city_reco[2:])
@@ -550,7 +541,7 @@ def diviner(input_dict,             # input x dict
 
     # 위로부터 적당히 잘라서 목적지 반환
 
-    return {"point_reco":point_reco[2:32], "city_reco":city_reco[2:], "area_reco":area_reco[2:]}
+    return {"point_reco":point_reco[3:32], "city_reco":city_reco[3:], "area_reco":area_reco[3:], "most_visit":point_reco[:3]}
 
 
 def normalization(x, raw_list):
