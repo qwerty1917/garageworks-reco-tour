@@ -521,19 +521,6 @@ def diviner(input_dict,             # input x dict
     city_reco = rankList(cities_final_list)
     area_reco = rankList(areas_final_list)
 
-
-    # print(point_reco[2:32])
-    # print(city_reco[2:])
-    # print(area_reco[2:])
-
-
-
-    # for index, item in enumerate(best50_table[10]):
-    #     print(total_col_index[index], item)
-
-
-
-
     rank_end_time = time.time()
     print("ending nominal / ordinal ranking")
     print("time on nominal / ordinal ranking: " +str(rank_end_time - rank_start_time) + "\n =====================")
