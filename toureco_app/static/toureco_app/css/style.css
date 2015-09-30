@@ -22,6 +22,40 @@ button {
     outline: none;
 }
 
+input {
+    display: block;
+    width: 200px;
+    margin: 5px auto;
+    padding: 8px 0;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    -webkit-appearance: none;
+            appearance: none;
+}
+
+input[type='range'] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    background: #fff;
+    -webkit-appearance: none;
+            appearance: none;
+     height: 34px;
+     width: 30px;
+     margin: -8px 0;
+     border-radius: 8px;
+     background: #16a085;
+     cursor: pointer;
+}
+
 /* common css */
 
 .contents-container {
@@ -130,48 +164,6 @@ button {
 
 /* toureco css :: choice */
 
-input {
-    display: block;
-    width: 200px;
-    margin: 5px auto;
-    padding: 8px 0;
-    background: none;
-    border: none;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    color: #ffffff;
-    font-size: 15px;
-    outline: none;
-    -webkit-appearance: none;
-            appearance: none;
-}
-
-input[type='range'] {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-input[type='range']::-webkit-slider-thumb {
-    background: #fff;
-    -webkit-appearance: none;
-            appearance: none;
-     height: 34px;
-     width: 30px;
-     margin: -8px 0;
-     border-radius: 8px;
-     background: #16a085;
-     cursor: pointer;
-}
-
-select {
-    width: 100%;
-    height: auto;
-    background: none;
-    border: none;
-    outline: none;
-}
-
 .option-item {
     display: block;
     width: 200px;
@@ -209,4 +201,69 @@ select {
     min-width: 380px;
     vertical-align: middle;
     height: 100%;
+}
+
+/* toureco css :: view reco result */
+
+.reco-result-title {
+    height: 60px;
+    padding: 0 20px;
+    background: #217dbb;
+    color: #fff;
+    font-family: Trench;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 60px;
+}
+
+.reco-container {
+    display: inline-block;
+    float: left;
+    height: 100vh;
+}
+
+.reco-list-container {
+    width: 25%;
+    height: 100vh;
+    background: #ecf0f1;
+}
+
+.reco-rank-panel {
+    width: 100%;
+}
+
+.reco-rank-title {
+    height: 45px;
+    color: #fff;
+    line-height: 45px;
+    font-family: Trench;
+    font-weight: bold;
+    text-align: center;
+    background: #4aa2df;
+}
+
+/*.reco-proper-rank-panel .reco-rank-title {
+    background: #3498db;
+}
+
+.reco-high-rank-panel .reco-rank-title {
+    background: #34495e;
+}*/
+
+.reco-rank-item {
+    height: 45px;
+    font-family: Trench;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+.reco-map-container {
+    width: 75%;
+    height: 100vh;
+    background: #fff;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
 }

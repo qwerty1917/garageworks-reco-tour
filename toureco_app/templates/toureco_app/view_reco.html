@@ -1,0 +1,71 @@
+{% extends "toureco_app/base.html" %}
+
+{% block container %}
+    {% block contents %}
+        <div class="contents-container">
+            <div class="reco-result-title">
+                We recommend these places for you!
+            </div>
+            <div class="reco-result-container">
+                <div class="reco-container reco-list-container">
+                    <!-- {% for key, reco in reco_data.items %}
+                        {{ reco }}
+                    {% endfor %} -->
+                    <div class="reco-rank-panel reco-proper-rank-panel">
+                        <div class="reco-rank-title">
+                            For just you!
+                        </div>
+                        <ul class="reco-rank-list">
+                            <li class="reco-rank-item">
+                                proper reco 1
+                            </li>
+                            <li class="reco-rank-item">
+                                proper reco 2
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="reco-rank-panel reco-high-rank-panel">
+                        <div class="reco-rank-title">
+                            Most people visited . . .
+                        </div>
+                        <ul class="reco-rank-list">
+                            <li class="reco-rank-item">
+                                high reco 1
+                            </li>
+                            <li class="reco-rank-item">
+                                high reco 2
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="reco-container reco-map-container">
+                    <div id="map">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function initialize() {
+                geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(37.514697, 126.898935);
+                var mapOptions = {
+                    zoom: 17,
+                    center: latlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+
+                map = new google.maps.Map($('#map')[0], mapOptions);
+
+                // Create a marker and set its position.
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: latlng,
+                  title: 'Hello World!'
+                });
+            }
+
+            google.maps.event.addDomListener(window, "load", initialize);
+        </script>
+    {% endblock %}
+{% endblock %}
