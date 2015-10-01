@@ -528,7 +528,7 @@ def diviner(input_dict,             # input x dict
 
     # 위로부터 적당히 잘라서 목적지 반환
 
-    return {"point_reco":point_reco[3:32], "city_reco":city_reco[3:], "area_reco":area_reco[3:], "most_visit":point_reco[:3]}
+    return {"point_reco":point_reco[25:35], "city_reco":city_reco[3:], "area_reco":area_reco[3:], "most_visit":point_reco[:15], "often_visit":point_reco[15:25]}
 
 
 def normalization(x, raw_list):
