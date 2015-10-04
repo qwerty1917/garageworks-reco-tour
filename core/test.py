@@ -1,9 +1,9 @@
 #-*- coding: utf-8 -*-
 __author__ = 'hyeongminpark'
 import pretreatment2
-reco_dict = pretreatment2.reco_wizard(4, 5, 6, 2, 5, 14, 25000, 3, 4, 5, 0, 0, 0)
+reco_dict = pretreatment2.reco_wizard(3, 1, 2, 2, 5, 14, 25000, 3, 4, 5, 0, 0, 0)
 
-print(reco_dict)
+# print(reco_dict)
 """
 사용방법: eng_code_mapped_csv.csv와 pretreatment2 두 파일을 호출하고자 하는 파이썬 파일(아마도 app controller)과 같은 디렉토리에 두고 위의 3,4번 라인 그대로 호출해서 사용하면 됨.
         reco_wizard 함수의 입출력 상세는 아래 명시함.
@@ -55,3 +55,15 @@ print( "code2area ex: " + code_map.code2area(4) )
 입력: 지역코드(관광지 코드는 code2point에, 17개시도 코드는 code2city에, 권역별 코드는 code2area에 줘야한다.)
 출력: 문자열(예시 - 관광지 코드: 정선(하이원/강원랜드), 17개시도: 대전, 권역별: 강원)
 """
+
+print("== most_visit ==")
+for i in reco_dict["most_visit"]:
+    print code_map.code2point(i)
+
+print("== often_visit ==")
+for i in reco_dict["often_visit"]:
+    print code_map.code2point(i)
+
+print("== point_reco ==")
+for i in reco_dict["point_reco"]:
+    print code_map.code2point(i)

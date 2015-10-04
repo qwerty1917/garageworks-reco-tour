@@ -2,6 +2,11 @@
 __author__ = 'hyeongminpark'
 import csv
 
+POINT_CODE = 0
+NAME = 1
+TAG_LIST = 2
+
+
 point_table = []
 # with open("point_code.csv", newline='') as csvfile:
 #     data_reader = csv.reader(csvfile)
@@ -14,8 +19,54 @@ point_table = []
 with open('point_code.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
-        row = [int(row[0]), row[1].strip().decode('UTF-8')]
-        point_table.append(row[0:2])
+        new_row = [int(row[0]), row[1].strip().decode('UTF-8')]
+
+        raw_tag_list = [row[2], row[3], row[4], row[5]]
+        # print(raw_tag_list)
+        tag_list = []
+        for tag in raw_tag_list:
+            if tag is not '':
+                tag_list.append(int(tag))
+
+        new_row.append(tag_list)
+        point_table.append(new_row)
+
+
+def pointCode2tagList(pointCode):
+    for point in point_table:
+        if point[POINT_CODE] == pointCode:
+            # print "found the point: " + str(pointCode) + code2point(pointCode)
+            # print "point[TAG_LIST]" + str(point[TAG_LIST])
+            return point[TAG_LIST]
+    return []
+
+
+weight_table = [
+    [1, "lodging"],
+    [2, "shopping"],
+    [3, "food"],
+    [4, "transport"],
+    [5, "entertainment"],
+    [6, "culture"],
+    [7, "landscape"],
+    [8, "street"],
+    [9, "security"],
+    [10, "kpop"],
+    [11, "medical"],
+    [12, "beauty"]
+]
+
+
+def weight_table_code2meaning(code):
+    for item in weight_table:
+        if item[0] == code:
+            return item[1]
+
+
+def weight_table_meaning2code(meaning):
+    for item in weight_table:
+        if item[1] == meaning:
+            return item[0]
 
 
 city_table = [
