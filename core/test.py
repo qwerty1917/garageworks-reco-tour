@@ -1,9 +1,9 @@
 #-*- coding: utf-8 -*-
 __author__ = 'hyeongminpark'
 import pretreatment2
-reco_dict = pretreatment2.reco_wizard(4, 5, 6, 2, 5, 14, 25000, 3, 4, 5, 0, 0, 0)
+reco_dict = pretreatment2.reco_wizard(3, 1, 2, 2, 5, 14, 25000, 3, 4, 5, 0, 0, 0)
 
-print(reco_dict)
+# print(reco_dict)
 """
 사용방법: eng_code_mapped_csv.csv와 pretreatment2 두 파일을 호출하고자 하는 파이썬 파일(아마도 app controller)과 같은 디렉토리에 두고 위의 3,4번 라인 그대로 호출해서 사용하면 됨.
         reco_wizard 함수의 입출력 상세는 아래 명시함.
@@ -41,8 +41,9 @@ key of output dict:
     === 코드북 참조 ===
     "city_reco" : 17개시도별 한국여행 방문지 (길이가 유동적으로 변함. 최대 19개. 보통 5개 내외)
     "area_reco" : 권역별 한국여행 관광지 (길이가 유동적으로 변함. 최대 10개 보통. 5개 내외)
-    "point_reco" : 한국여행 관광지 (이론적으로는 최대 30개 추천함. - 하지만 거의 항상 30개라고 보면 됨. 잘 안변함.)
-    "most_visit" : 최 상위 방문지 3곳 추천. 이곳은 개인적 성향은 약간만 반영되고(아주 반영되지 않는 것은 아님.) 많은 사람들이 방문하는 곳임.
+    "point_reco" : 한국여행 관광지 (개인 맞춤 최대 10개 추천함.)
+    "most_visit" : 최 상위 방문지 15곳 추천. 이곳은 개인적 성향은 약간만 반영되고(아주 반영되지 않는 것은 아님.) 많은 사람들이 방문하는 곳임.
+    "often_visit" : 최 상위 이후 16 ~ 25위 10곳 추천
     """
 
 import code_map
@@ -54,3 +55,15 @@ print( "code2area ex: " + code_map.code2area(4) )
 입력: 지역코드(관광지 코드는 code2point에, 17개시도 코드는 code2city에, 권역별 코드는 code2area에 줘야한다.)
 출력: 문자열(예시 - 관광지 코드: 정선(하이원/강원랜드), 17개시도: 대전, 권역별: 강원)
 """
+
+print("== most_visit ==")
+for i in reco_dict["most_visit"]:
+    print code_map.code2point(i)
+
+print("== often_visit ==")
+for i in reco_dict["often_visit"]:
+    print code_map.code2point(i)
+
+print("== point_reco ==")
+for i in reco_dict["point_reco"]:
+    print code_map.code2point(i)

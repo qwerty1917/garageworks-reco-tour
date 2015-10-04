@@ -4,10 +4,13 @@ import csv
 import time
 from random import shuffle
 from operator import itemgetter
+import numpy as np
+import code_map
 
 ### 상수
 EXPENSE_OF_ALL_PER_MAN_MEAN = 1436.4
 DATA_TRUNCATE = 2000
+DATA_TRUNCATE_TOGGLE = False
 
 def create_raw_table_from_csv(dir):
 
@@ -297,6 +300,76 @@ def make_input(motive_of_tour_1,        # nominal
     return input_dict
 
 
+def rankByTags(pointList, inputDict):
+    # print pointList
+
+    resultList = pointList
+
+    rankDict = {}
+    for index, pointCode in enumerate(pointList):
+
+        hitcount = 0
+
+        # print "pointcode: " + str(pointCode)
+        rankDict[pointCode] = len(pointList) - index
+
+        if inputDict["motive_of_tour_1"] == 1 and 7 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 2 and 2 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 3 and 6 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 4 and 3 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 6 and 5 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 10 and 8 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 11 and 9 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 13 and 10 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 14 and 11 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_1"] == 15 and 12 in code_map.pointCode2tagList(pointCode):
+
+            rankDict[pointCode] += int(79 * (len(pointList) - rankDict[pointCode]) / 80)
+            hitcount += 1
+
+        if inputDict["motive_of_tour_2"] == 1 and 7 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 2 and 2 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 3 and 6 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 4 and 3 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 6 and 5 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 10 and 8 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 11 and 9 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 13 and 10 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 14 and 11 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_2"] == 15 and 12 in code_map.pointCode2tagList(pointCode):
+
+            rankDict[pointCode] += int((len(pointList) - rankDict[pointCode]) / 2)
+            hitcount += 1
+
+        if inputDict["motive_of_tour_3"] == 1 and 7 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 2 and 2 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 3 and 6 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 4 and 3 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 6 and 5 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 10 and 8 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 11 and 9 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 13 and 10 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 14 and 11 in code_map.pointCode2tagList(pointCode) or\
+            inputDict["motive_of_tour_3"] == 15 and 12 in code_map.pointCode2tagList(pointCode):
+
+            rankDict[pointCode] += int((len(pointList) - rankDict[pointCode]) / 3)
+            hitcount += 1
+
+
+        if hitcount == 0:
+            rankDict[pointCode] = 0
+
+        for key, item in rankDict.items():
+            if item == 0:
+                del rankDict[key]
+
+    resultList = [i[0] for i in sorted(rankDict.items(), key=itemgetter(1), reverse=True)]
+    # print resultList
+
+
+    return resultList
+
+
 def rankList(list):
     resultList = []
     rankDict = {}
@@ -353,30 +426,52 @@ def diviner(input_dict,             # input x dict
                          "total_expense_of_entertainment",
                          "total_expense_of_culture"]
 
-    # ratio 컬럼들 정규화
-    print("start normalization")
-    normalization_start_time = time.time()
-    for ratio_col in ratio_x_list:
-        # print(ratio_col)
-        single_col_data_list = []
-        for row in data_table:
-            single_col_data_list.append(row[total_col_index.index(ratio_col)])
-        # print("single_col_data_list len: " + str(len(single_col_data_list)))
+    # # ratio 컬럼들 정규화
+    # print("start normalization")
+    # normalization_start_time = time.time()
+    # for ratio_col in ratio_x_list:
+    #
+    #     single_col_data_list = []
+    #     for row in data_table:
+    #         single_col_data_list.append(row[total_col_index.index(ratio_col)])
+    #
+    #     input_dict[ratio_col] = normalization(input_dict[ratio_col], single_col_data_list)
+    #     for i in range(len(data_table)):
+    #         data_table[i][total_col_index.index(ratio_col)] = normalization(data_table[i][total_col_index.index(ratio_col)], single_col_data_list)
+    #
+    # normalization_end_time = time.time()
+    # print("end normalization")
+    # print("time on normalization: " + str(normalization_end_time - normalization_start_time) + "\n =====================")
 
-        input_dict[ratio_col] = normalization(input_dict[ratio_col], single_col_data_list)
-        for i in range(len(data_table)):
-            data_table[i][total_col_index.index(ratio_col)] = normalization(data_table[i][total_col_index.index(ratio_col)], single_col_data_list)
-    normalization_end_time = time.time()
-    print("end normalization")
-    print("time on normalization: " + str(normalization_end_time - normalization_start_time) + "\n =====================")
+    # ratio 컬럼들 정규화 2
+    print("start normalization 2")
+    normalization_2_start_time = time.time()
+
+    data_table_array = np.asarray(data_table)
+
+    for ratio_col in ratio_x_list:
+
+        single_col_data_list = data_table_array[:, total_col_index.index(ratio_col)]
+        normalized_col = (single_col_data_list - single_col_data_list.min(axis=0))/(single_col_data_list.max(axis=0) - single_col_data_list.min(axis=0))
+
+        data_table_array[:, total_col_index.index(ratio_col)] = normalized_col
+
+    data_table = data_table_array.tolist()
+
+
+    normalization_2_end_time = time.time()
+    print("end normalization 2")
+    print("time on normalization 2: " + str(normalization_2_end_time - normalization_2_start_time) + "\n =====================")
 
 
     print("starting kNN")
     kNN_start_time = time.time()
     # ratio 기준으로 가장 가까운 포인트 50개 구한다.
-    best50_table = []
-    dists_in_best50 = []
+    best5000_table = []
+    dists_in_best5000 = []
     total_d = d_len = 0 #test code
+
+    print("data_table len:" + str(len(data_table)))
     for row in data_table:
         dsq = 0
         # print("==== "+ratio_col+" ====")
@@ -396,33 +491,33 @@ def diviner(input_dict,             # input x dict
         # print("========")
 
         d = dsq**(1/2)
-        if len(best50_table) < 50:
-            best50_table.append(row)
-            dists_in_best50.append(d)
+        if len(best5000_table) < 5000:
+            best5000_table.append(row)
+            dists_in_best5000.append(d)
 
-        elif d < max(dists_in_best50):
-            index_to_del = dists_in_best50.index(max(dists_in_best50))
-            del best50_table[index_to_del]
-            del dists_in_best50[index_to_del]
+        elif d < max(dists_in_best5000):
+            index_to_del = dists_in_best5000.index(max(dists_in_best5000))
+            del best5000_table[index_to_del]
+            del dists_in_best5000[index_to_del]
 
-            best50_table.append(row)
-            dists_in_best50.append(d)
+            best5000_table.append(row)
+            dists_in_best5000.append(d)
 
         total_d = total_d + d #test code
         d_len = d_len + 1
     # print("d mean : " + str(total_d/d_len))
-    # print("best d list: " + str(dists_in_best50))
+    # print("best d list: " + str(dists_in_best5000))
     kNN_end_time = time.time()
     print("ending kNN")
     print("time on kNN: " + str(kNN_end_time - kNN_start_time) + "\n =====================")
 
 
-    # 위의 50개 포인트 중 nominal, ordinal 를 기준으로 순위를 정한다. table: best50_table, index: total_col_index
+    # 위의 50개 포인트 중 nominal, ordinal 를 기준으로 순위를 정한다. table: best5000_table, index: total_col_index
     print("starting nominal / ordinal ranking")
     rank_start_time = time.time()
 
     rank_table = [] # rank_table[0] : rank, rank_table[1] : data row
-    for row in best50_table:
+    for row in best5000_table:
         grade = 0
         """ nominal vars
         motive_of_tour_1
@@ -499,7 +594,7 @@ def diviner(input_dict,             # input x dict
 
 
     result_data_table = []
-    for i in range(20):
+    for i in range(1000):
         result_data_table.append(rank_table[i][1])
 
     points_final_list = [] # 한국여행 방문지
@@ -513,6 +608,8 @@ def diviner(input_dict,             # input x dict
                 cities_final_list.append(row[i])
             elif "tour_visit_area_" in index:
                 areas_final_list.append(row[i])
+
+    # 실수 리스트를 정수 리스트로 변환
     points_final_list = [int(i) for i in points_final_list]
     cities_final_list = [int(i) for i in cities_final_list]
     areas_final_list = [int(i) for i in areas_final_list]
@@ -521,18 +618,11 @@ def diviner(input_dict,             # input x dict
     city_reco = rankList(cities_final_list)
     area_reco = rankList(areas_final_list)
 
+    point_reco.remove(0)
+    city_reco.remove(0)
+    area_reco.remove(0)
 
-    # print(point_reco[2:32])
-    # print(city_reco[2:])
-    # print(area_reco[2:])
-
-
-
-    # for index, item in enumerate(best50_table[10]):
-    #     print(total_col_index[index], item)
-
-
-
+    point_reco = rankByTags(point_reco, input_dict)
 
     rank_end_time = time.time()
     print("ending nominal / ordinal ranking")
@@ -541,7 +631,7 @@ def diviner(input_dict,             # input x dict
 
     # 위로부터 적당히 잘라서 목적지 반환
 
-    return {"point_reco":point_reco[3:32], "city_reco":city_reco[3:], "area_reco":area_reco[3:], "most_visit":point_reco[:3]}
+    return {"point_reco":point_reco[8:35], "city_reco":city_reco[3:], "area_reco":area_reco[3:], "most_visit":point_reco[:3], "often_visit":point_reco[3:8]}
 
 
 def normalization(x, raw_list):
@@ -582,12 +672,14 @@ def reco_wizard(motive_of_tour_1,        # nominal
     column_index, raw_table = create_raw_table_from_csv('eng_code_mapped_csv.csv')
 
     ### 데이터 너무 커서 임시로 자름!
-    shuffle(raw_table)
-    raw_table=raw_table[:DATA_TRUNCATE]
+    if DATA_TRUNCATE_TOGGLE:
+        shuffle(raw_table)
+        raw_table=raw_table[:DATA_TRUNCATE]
     ### 이까지
 
     # print("raw data len: " + str(len(raw_table)))
     column_index, positive_table = row_truncate_by_satisfaction(column_index, raw_table)
+    print("positive_table len: " + str(len(positive_table)))
     # print("positive data col num: "+ str(len(positive_table[0])) + ", index len : " + str(len(column_index)))
     # print("positive datapoint: " + str(len(positive_table)))
 
@@ -597,6 +689,7 @@ def reco_wizard(motive_of_tour_1,        # nominal
     # print("new_col_ind len: "+ str(len(new_col_ind)) + ", set len: " + str(len(set(new_col_ind)))) # 지역, 도시 코드가 1~100 모두 다 있는것은 아니라 좀 더 많아짐
 
     trc_col_ind, trc_tbl = col_truncate(new_col_ind, column_index, positive_table)
+    print("trc_tbl len:" + str(len(trc_tbl)))
     # print(len(trc_col_ind), len(trc_tbl[0]))
 
     result_dict = diviner(make_input(motive_of_tour_1,
